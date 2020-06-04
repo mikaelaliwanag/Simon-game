@@ -7,7 +7,7 @@ body {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
-  color: #FEF2BF;
+  color: rgb(247, 234, 179);
 }
 
 .container {
@@ -27,26 +27,27 @@ body {
 }
 
 .game-over {
-  background-color: red;
+  background-color: #e43232;
   opacity: 0.8;
 }
 
 .red {
-  background-color: red;
+  background-color: #e43232;
 }
 
 .green {
-  background-color: green;
+  background-color: #3de73d;
 }
 
 .blue {
-  background-color: blue;
+  background-color: #3439dc;
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #f3f33c;
 }
 
+/* button animation */
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
