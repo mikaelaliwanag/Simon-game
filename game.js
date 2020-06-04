@@ -2,7 +2,7 @@ var buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
 
-//on click function that stores user clicked button pattern in userClickedPattern array
+//on click function that stores user clicked button pattern
 $(".btn").click(function() {
     var userChosenColor = $(this).attr("id");
 
@@ -13,7 +13,7 @@ $(".btn").click(function() {
     playSound(userChosenColor);
 })
 
-//generates random button color pattern. FLash animation.
+//generates random button color pattern
 function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
 
