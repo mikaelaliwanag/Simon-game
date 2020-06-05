@@ -7,7 +7,7 @@ body {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
-  color: rgb(247, 234, 179);
+  color: #f7eab3;
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
   display: inline-block;
   height: 200px;
   width: 200px;
-  border: 10px solid black;
+  border: 10px solid #e2d7d7;
   border-radius: 20%;
 }
 
@@ -49,6 +49,6 @@ body {
 
 /* button animation */
 .pressed {
-  box-shadow: 0 0 20px white;
-  background-color: grey;
+  box-shadow: 0 0 20px #ebe8e8;
+  background-color: #dce1e6;
 }
