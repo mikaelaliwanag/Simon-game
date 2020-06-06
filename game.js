@@ -6,26 +6,30 @@ var level = 0;
 
 //keypress event that starts game
 $(document).keypress(function() {
+
   if(started) {
-       $("#level-title").text("Level " + level);
-       nextSequence();
-       started = false;
-     }
+     $("#level-title").text("Level " + level);
+    
+     nextSequence();
+        
+     started = false;
+  }
 });
 
 //on click function that stores user clicked button pattern
 $(".btn").click(function() {
+    if(!started) {
+        var userChosenColor = $(this).attr("id");
+        userClickedPattern.push(userChosenColor);
 
-    var userChosenColor = $(this).attr("id");
-    userClickedPattern.push(userChosenColor);
+        animateButton(userChosenColor);
+        playSound(userChosenColor);
 
-    animateButton(userChosenColor);
-    playSound(userChosenColor);
-
-    checkAnswer(userClickedPattern.length - 1);
+        checkAnswer(userClickedPattern.length - 1);
+    }
 });
 
-
+//checks user answer against game pattern. Displays game over when user gets pattern wrong.
 function checkAnswer(currentLevel) {
 
     if(gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
@@ -37,14 +41,14 @@ function checkAnswer(currentLevel) {
       }
 
     } else {
-
-        var audio = new Audio("sounds/wrong.mp3");
-        audio.play();
+        playSound("wrong");
 
         $("body").addClass("game-over");
         setTimeout(function() {
             $("body").removeClass("game-over");
         }, 200);
+
+        $("#level-title").text("Game over! Press Any Key to Restart.")
 
         startOver();
     }
@@ -86,12 +90,11 @@ function animateButton(currentColor) {
 
 }
 
+//restarts game
 function startOver() {
     level = 0;
     gamePattern = [];
     started = true;
-    
-    $("#level-title").text("Game over! Press any key to restart.")
 }
 
 
