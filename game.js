@@ -1,13 +1,16 @@
 var buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
+var started = true;
 var level = 0;
 
 //keypress event that starts game
-$(document).one("keydown", function() {
-
-    $("#level-title").text("Level " + level);
-    nextSequence();
+$(document).keypress(function() {
+  if(started) {
+       $("#level-title").text("Level " + level);
+       nextSequence();
+       started = false;
+     }
 });
 
 //on click function that stores user clicked button pattern
@@ -34,7 +37,16 @@ function checkAnswer(currentLevel) {
       }
 
     } else {
-        
+
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
+
+        $("body").addClass("game-over");
+        setTimeout(function() {
+            $("body").removeClass("game-over");
+        }, 200);
+
+        startOver();
     }
 }
 
@@ -74,5 +86,12 @@ function animateButton(currentColor) {
 
 }
 
+function startOver() {
+    level = 0;
+    gamePattern = [];
+    started = true;
+    
+    $("#level-title").text("Game over! Press any key to restart.")
+}
 
 
