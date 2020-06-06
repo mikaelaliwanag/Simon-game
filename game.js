@@ -37,8 +37,9 @@ function checkAnswer(currentLevel) {
       if (userClickedPattern.length === gamePattern.length) {
             setTimeout(() => {
                nextSequence();
-            }, 1000);
-      }
+            }, 700);
+       
+        }
 
     } else {
         playSound("wrong");
@@ -48,13 +49,14 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over");
         }, 200);
 
+
         $("#level-title").text("Game over! Press Any Key to Restart.")
 
         startOver();
     }
 }
 
-//generates random button color pattern
+//generates game pattern
 function nextSequence() {
 
     userClickedPattern = [];
@@ -69,6 +71,7 @@ function nextSequence() {
     $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100); 
 
     playSound(randomChosenColor);
+
 
 }
 
